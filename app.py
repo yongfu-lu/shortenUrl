@@ -36,7 +36,7 @@ def shorten_url():
 
 @app.route('/', methods=['POST', 'GET'])
 def home():
-
+    s = "abc"
     if request.method == "POST":
         url_received = request.form['nm']
         # check if url already exists in db
@@ -59,7 +59,7 @@ def home():
 
 @app.route('/display/<url>')
 def display_short_url(url):
-    return render_template('shorturl.html', short_url_display = url)
+    return render_template('shorturl.html', domain=request.host_url, short_url_display = url)
 
 
 @app.route('/<short_url>')
